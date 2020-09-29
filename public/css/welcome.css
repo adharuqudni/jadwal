@@ -1,0 +1,24 @@
+h1,
+h2 {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    padding-bottom: 25px;
+    -webkit-text-stroke: 0.05px black;
+    color: #eeedff;
+}
+
+.container {
+    padding-top: 150px;
+}
+.btn-custom {
+    background: rgb(167, 169, 224);
+    color: #eeedff;
+}
+.btn-custom:hover {
+    background: rgb(0, 43, 160, 1);
+    color: #eeedff;
+}
+.btn-custom:active {
+    background: rgb(0, 43, 160, 0.6);
+    color: #eeedff;
+}

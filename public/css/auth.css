@@ -1,0 +1,12 @@
+.btn-custom {
+    background: rgb(167, 169, 224);
+    color: #eeedff;
+}
+.btn-custom:hover {
+    background: rgb(0, 43, 160, 1);
+    color: #eeedff;
+}
+.btn-custom:active {
+    background: rgb(0, 43, 160, 0.6);
+    color: #eeedff;
+}

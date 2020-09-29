@@ -1,0 +1,18 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #3b70f7;
+    background: radial-gradient(circle, #3b70f7 32%, #3b70f7 100%);
+    height: 100vh;
+    width: 100vw;
+}
+
+.bg-nav {
+    background-color: #0041bc;
+}
+.nav-bar {
+    position: fixed;
+    z-index: 10;
+}
