@@ -22,3 +22,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('jadwal','jadwalController');
+Route::resource('class','classController');
+route::post('class/store/{class}','classController@storeData');

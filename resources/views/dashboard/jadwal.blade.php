@@ -1,11 +1,15 @@
 @extends('dashboard.layouts.master')
-z
+@section('head')
+    <link rel="stylesheet" href="{{ asset('css/classroom.css') }}">
+@endsection
+
 @section('content')
 <div class="container">
+    
     <table class="mb-0 table table-hover">
         <thead>
             <tr>
-                <th>JAM</th> 
+                <th>Jam</th> 
                 <th>Senin</th>
                 <th>Selasa</th>
                 <th>Rabu</th>
@@ -16,36 +20,46 @@ z
             </tr>
             </thead>
             <tbody>
+                @foreach ($classroom as $class)
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
+            <th scope="row">{{$class->class_starts}}</th>   
+            @if ($class->day == 'Senin')
+                <td style="background-color: rgb(63, 106, 216,0.5);">{{$class->classname}}</td> 
+            @else
+                <td>    </td>
+            @endif
+            @if ($class->day == 'Selasa')
+                <td style="background-color: rgb(63, 106, 216,0.5);">{{$class->classname}}</td> 
+            @else
+                <td>    </td>
+            @endif
+            @if ($class->day == 'Rabu')
+                <td style="background-color: rgb(63, 106, 216,0.5);">{{$class->classname}}</td> 
+            @else
+                <td>    </td>
+            @endif
+            @if ($class->day == 'Kamis')
+                <td style="background-color: rgb(63, 106, 216,0.5);">{{$class->classname}}</td> 
+            @else
+                <td >    </td>
+            @endif
+            @if ($class->day == 'Jumat')
+                <td style="background-color: rgb(63, 106, 216,0.5);">{{$class->classname}}</td> 
+            @else
+                <td>    </td>
+            @endif
+            @if ($class->day == 'Sabtu')
+                <td style="background-color: rgb(63, 106, 216,0.5);">{{$class->classname}}</td> 
+            @else
+                <td>    </td>
+            @endif
+            @if ($class->day == 'Minggu')
+                <td style="background-color: rgb(63, 106, 216,0.5);">{{$class->classname}}</td> 
+            @else
+                <td>    </td>
+            @endif
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td>Larry</td>
-            </tr>
+                @endforeach
         </tbody>
     </table>
     <button class="mb-2 mr-2 btn-transition btn btn-outline-info btn-lg btn-block" data-toggle="modal" data-target="#addClass">Tambah Kelas </button>
@@ -58,11 +72,10 @@ z
             <div class="modal-header">
                 <h5 class="modal-title" id="addClass">Tambah Kelas</h5>
             </div>
-            <form action="/class" method="post">
+        <form action="/class/{{$jadwalSingle->id}}" method="post">
                 @csrf
+                @method('PUT')
             <div class="modal-body">
-                <form action="/jadwal" method="post">
-                @csrf
                 <div class="form-row">
                     <div class="col-md-7">
                         <div class="position-relative form-group"><label for="exampleEmail11" class="">Nama Kelas</label><input name="classname" id="classname" placeholder="Kelasmu" type="text" class="form-control"></div>
@@ -79,8 +92,8 @@ z
                         <div class="position-relative form-group"><label for="examplePassword11" class="">Kelas berakhir</label><input name="class_ends" id="class_ends" placeholder="Jam Berakhir" type="time" class="form-control"></div>
                     </div>
                 </div>
-                <div class="position-relative form-group"><label for="exampleCustomMutlipleSelect" class="">Pilih Hari</label>
-                    <select multiple="" type="select" id="exampleCustomMutlipleSelect" name="customSelect" class="custom-select">
+                <div class="position-relative form-group"><label for="day" class="">Pilih Hari</label>
+                    <select multiple="" type="select" id="day" name="day" class="custom-select">
                         <option value="Senin">Senin</option>
                         <option value="Selasa">Selasa</option>
                         <option value="Rabu">Rabu</option>
@@ -90,7 +103,6 @@ z
                         <option value="Minggu">Minggu</option>
                     </select>
                 </div>
-            </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

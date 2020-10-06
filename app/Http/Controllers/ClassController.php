@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Jadwal;
-use App\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use App\Classroom;
 
-class JadwalController extends Controller
+class classController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +24,7 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        return view('dashboard.makeJadwal');
+        //
     }
 
     /**
@@ -36,14 +33,9 @@ class JadwalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        Jadwal::create([
-
-            'name' => $request->name,   
-            'user_id'=> Auth::user()->id
-    	]);
-        return redirect()-> route('home');
+         //
     }
 
     /**
@@ -54,20 +46,18 @@ class JadwalController extends Controller
      */
     public function show($id)
     {
-        $classroom = jadwal::find($id)->classroom->sortBy('class_starts');
-        $jadwal = User::find(Auth::user()->id)->jadwal;
-        $jadwalSingle = $jadwal->where('id',$id)->first();
-        return view('dashboard.jadwal', ['classroom' => $classroom,'jadwal'=> $jadwal,'jadwalSingle'=> $jadwalSingle] );
+        //
     }
-     /**
-     * Display the specified resource.
+
+    /**
+     * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -79,7 +69,17 @@ class JadwalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Classroom::create([
+
+            'jadwal_id'=> $id,
+            'classname' => $request->classname,
+            'teacher' => $request->teacher,
+            'class_starts' => $request->class_starts,
+            'class_ends' => $request->class_ends,
+            'day' => $request->day,   
+            
+    	]);
+        return redirect('jadwal/'.$id);
     }
 
     /**
@@ -91,5 +91,8 @@ class JadwalController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function storeData(Request $request,$id){
+
     }
 }

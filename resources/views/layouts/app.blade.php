@@ -23,7 +23,7 @@
     @yield('head')
 </head>
 <body>
-    <div id="app" class="w-100 h-100">
+    <div class="w-100 h-100">
         <nav class="navbar navbar-expand-lg navbar-light bg-nav mb-5">
               <a class="navbar-brand m-auto text-light" href="/">
                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
